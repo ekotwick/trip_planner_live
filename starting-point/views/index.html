@@ -16,7 +16,7 @@
           <div>
             <h4>Hotels</h4>
             <select data-type="hotel" id="hotel-choices">
-              <option value="display">
+              <option>
 <!--               <script>
               $(hotels).data();
               </script> -->
@@ -36,7 +36,7 @@
           <div>
             <h4>Activities</h4>
             <select data-type="activity" id="activity-choices">
-<!--               <option>Mahayana Buddhist Temple Association</option>
+<!--<!--               <option>Mahayana Buddhist Temple Association</option>-->
               <option>...</option> -->
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
@@ -98,10 +98,6 @@
   var hotels = {{ hotels | dump | safe }};
   var restaurants = {{ restaurants | dump | safe }};
   var activities = {{ activities | dump | safe }};
-
-  var test = $("#hotel-choices").data("hotels", hotels)
-  //$("options").text($("#hotel-choices").data("hotels"))
-
 </script>
 
 {% endblock %}
