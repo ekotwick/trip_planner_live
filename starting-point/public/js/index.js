@@ -35,9 +35,51 @@ $(document).ready(
 	$hotelChoiceBtn.on('click', function(){
 		var $hotelChoice = $('#hotel-choices').val()
 		console.log($hotelChoice)
-		// $('.itinerary-item')[0].append($($hotelChoice));
-		$('.itinerary-item')[0].data($hotelChoice);
+    $('#hotel-spot').append($("<span id='hotel-choice'>" + $hotelChoice + " " + "</span>"))
 	})
+)
+
+var $restaurantChoiceBtn = $('#restaurant-choices').next();
+$(document).ready(
+	$restaurantChoiceBtn.on('click', function(){
+		var $restaurantChoice = $('#restaurant-choices').val()
+		console.log($restaurantChoice)
+		 $('#restaurant-spot').append($("<span id='restaurant-choice'>" + $restaurantChoice + "</span>"));
+	})
+)
+
+var $activityChoiceBtn = $('#activity-choices').next();
+$(document).ready(
+	$activityChoiceBtn.on('click', function(){
+		var $activityChoice = $('#activity-choices').val()
+		console.log($activityChoice)
+		 $('#activity-spot').append($("<span id='activity-choice'>" + $activityChoice + "</span>"));
+	})
+)
+
+$(document).ready(
+  $('#hotel-remove-button').on('click', function(){
+    $(this).next().remove();
+  })
+)
+
+$(document).ready(
+  $('#restaurant-remove-button').on('click', function(){
+    $(this).next().remove();
+  })
+)
+
+$(document).ready(
+  $('#activity-remove-button').on('click', function(){
+    $(this).next().remove();
+  })
+)
+
+var numDays = 3;
+$(document).ready(
+  $('#day-add').on('click', function(){
+    $(this).prev().after("<button class='btn btn-circle day-btn'>" + ++numDays + "</button>")
+  })
 )
 
 // $(document).ready(
