@@ -16,24 +16,28 @@
           <div>
             <h4>Hotels</h4>
             <select data-type="hotel" id="hotel-choices">
-              <option>Andaz Wall Street</option>
-              <option>...</option>
+              <option value="display">
+<!--               <script>
+              $(hotels).data();
+              </script> -->
+              </option>
+              <option value="drop-menu"></option>
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
           <div>
             <h4>Restaurants</h4>
             <select data-type="restaurant" id="restaurant-choices">
-              <option>Bouley</option>
-              <option>...</option>
+<!--               <option>Bouley</option>
+              <option>...</option> -->
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
           <div>
             <h4>Activities</h4>
             <select data-type="activity" id="activity-choices">
-              <option>Mahayana Buddhist Temple Association</option>
-              <option>...</option>
+<!--               <option>Mahayana Buddhist Temple Association</option>
+              <option>...</option> -->
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
@@ -61,7 +65,7 @@
             <h4>My Hotel</h4>
             <ul class="list-group">
               <div class="itinerary-item">
-                <span class="title">Andaz Wall Street</span>
+<!--                 <span class="title">Andaz Wall Street</span> -->
                 <button class="btn btn-xs btn-danger remove btn-circle">x</button>
               </div>
             </ul>
@@ -70,7 +74,7 @@
             <h4>My Restaurants</h4>
             <ul class="list-group">
               <div class="itinerary-item">
-                <span class="title">Bouley</span>
+<!--                 <span class="title">Bouley</span> -->
                 <button class="btn btn-xs btn-danger remove btn-circle">x</button>
               </div>
             </ul>
@@ -79,7 +83,7 @@
             <h4>My Activities</h4>
             <ul class="list-group">
               <div class="itinerary-item">
-                <span class="title">Mahayana Buddhist Temple Association</span>
+<!--                 <span class="title">Mahayana Buddhist Temple Association</span> -->
                 <button class="btn btn-xs btn-danger remove btn-circle">x</button>
               </div>
             </ul>
@@ -89,4 +93,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  var hotels = {{ hotels | dump | safe }};
+  var restaurants = {{ restaurants | dump | safe }};
+  var activities = {{ activities | dump | safe }};
+
+  var test = $("#hotel-choices").data("hotels", hotels)
+  //$("options").text($("#hotel-choices").data("hotels"))
+
+</script>
+
 {% endblock %}
