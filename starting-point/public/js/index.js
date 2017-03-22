@@ -34,8 +34,9 @@ var $hotelChoiceBtn = $('#hotel-choices').next();
 $(document).ready(
 	$hotelChoiceBtn.on('click', function(){
 		var $hotelChoice = $('#hotel-choices').val()
-		console.log($hotelChoice)
-    $('#hotel-spot').append($("<span id='hotel-choice' class= day-number-" + $('.current-day').text() + ">" + $hotelChoice + " " + "</span>"))
+    $('#hotel-spot').append('<span class= "hotel-choice">')
+    $('#hotel-spot').children().last().addClass('choice').addClass('day-number-' + $('.current-day').text()).text($hotelChoice)
+    //console.log($('.hotel-choice'))
 	})
 )
 
@@ -43,8 +44,9 @@ var $restaurantChoiceBtn = $('#restaurant-choices').next();
 $(document).ready(
 	$restaurantChoiceBtn.on('click', function(){
 		var $restaurantChoice = $('#restaurant-choices').val()
-		console.log($restaurantChoice)
-		 $('#restaurant-spot').append($("<span id='restaurant-choice' class= day-number-" + $('.current-day').text() + ">" + $restaurantChoice + "</span>"));
+    $('#restaurant-spot').append('<span id= "restaurant-choice">')
+    $('#restaurant-spot').children().last().addClass('choice').addClass('day-number-' + $('.current-day').text()).text($restaurantChoice)
+    // $('#restaurant-choice').addClass('choice').addClass('day-number-' + $('.current-day').text()).text($restaurantChoice).removeAttr('#restarant-choice')
 	})
 )
 
@@ -52,8 +54,9 @@ var $activityChoiceBtn = $('#activity-choices').next();
 $(document).ready(
 	$activityChoiceBtn.on('click', function(){
 		var $activityChoice = $('#activity-choices').val()
-		console.log($activityChoice)
-		 $('#activity-spot').append($("<span id='activity-choice' class= day-number-" + $('.current-day').text() + ">" + $activityChoice + "</span>"));
+    $('#activity-spot').append('<span id= "activity-choice">')
+    $('#activity-spot').children().last().addClass('choice').addClass('day-number-' + $('.current-day').text()).text($activityChoice)
+    // $('#activity-choice').addClass('choice').addClass('day-number-' + $('.current-day').text()).text($activityChoice).removeAttr('#activity-choice')
 	})
 )
 
@@ -78,23 +81,27 @@ $(document).ready(
 var numDays = 3;
 $(document).ready(
   $('#day-add').on('click', function(){
-    $('.current-day').removeClass('current-day');
-    console.log('do we get here?');
-    $(this).prev().after("<button class='btn btn-circle day-btn current-day>" + ++numDays + "</button>")
+    $('.current-day').removeClass('current-day').addClass('not-current-day');
+    $(this).before($("<button class='btn btn-circle day-btn current-day'>" + ++numDays + "</button>"))
   })
 )
 
 $(document).ready(
   $('.day-buttons').on('click', function(){
-     console.log($(event.target).is('.btn'))
-     console.log($(event.target).text())
-     if ($(event.target).is('.btn') === true) {
-      // $('.current-day').removeClass('current-day');
-      // $(event.target).addClass('current-day')
+     if ($(event.target).is('.btn') === true && !$(event.target).is('#day-add') ) {
+      $('.current-day').removeClass('current-day').addClass('not-current-day');
+      $(event.target).addClass('current-day')
+      $('.choice').hide()
+      $('.hotel-choice').removeClass('.hotel-choice')
+      var currentDayNum = $('.current-day').text()
+      $('.day-number-' + currentDayNum).show()
+
+      //console.log(typeof $(event.target))
+      //$('.not-current-day').hide()
       // if ($(event.target).text() !== $('.current-day').text()){
       //   $('.day-number-')
       // }
-      console.log('this ran');
+      //console.log('this ran');
      }
   })
 )
