@@ -35,7 +35,7 @@ $(document).ready(
 	$hotelChoiceBtn.on('click', function(){
 		var $hotelChoice = $('#hotel-choices').val()
 		console.log($hotelChoice)
-    $('#hotel-spot').append($("<span id='hotel-choice'>" + $hotelChoice + " " + "</span>"))
+    $('#hotel-spot').append($("<span id='hotel-choice' class= day-number-" + $('.current-day').text() + ">" + $hotelChoice + " " + "</span>"))
 	})
 )
 
@@ -44,7 +44,7 @@ $(document).ready(
 	$restaurantChoiceBtn.on('click', function(){
 		var $restaurantChoice = $('#restaurant-choices').val()
 		console.log($restaurantChoice)
-		 $('#restaurant-spot').append($("<span id='restaurant-choice'>" + $restaurantChoice + "</span>"));
+		 $('#restaurant-spot').append($("<span id='restaurant-choice' class= day-number-" + $('.current-day').text() + ">" + $restaurantChoice + "</span>"));
 	})
 )
 
@@ -53,7 +53,7 @@ $(document).ready(
 	$activityChoiceBtn.on('click', function(){
 		var $activityChoice = $('#activity-choices').val()
 		console.log($activityChoice)
-		 $('#activity-spot').append($("<span id='activity-choice'>" + $activityChoice + "</span>"));
+		 $('#activity-spot').append($("<span id='activity-choice' class= day-number-" + $('.current-day').text() + ">" + $activityChoice + "</span>"));
 	})
 )
 
@@ -78,13 +78,37 @@ $(document).ready(
 var numDays = 3;
 $(document).ready(
   $('#day-add').on('click', function(){
-    $(this).prev().after("<button class='btn btn-circle day-btn'>" + ++numDays + "</button>")
+    $('.current-day').removeClass('current-day');
+    console.log('do we get here?');
+    $(this).prev().after("<button class='btn btn-circle day-btn current-day>" + ++numDays + "</button>")
   })
 )
 
-// $(document).ready(
-// 	$('.itinerary-item')[0].append($($hotelChoice));
-// )
+$(document).ready(
+  $('.day-buttons').on('click', function(){
+     console.log($(event.target).is('.btn'))
+     console.log($(event.target).text())
+     if ($(event.target).is('.btn') === true) {
+      // $('.current-day').removeClass('current-day');
+      // $(event.target).addClass('current-day')
+      // if ($(event.target).text() !== $('.current-day').text()){
+      //   $('.day-number-')
+      // }
+      console.log('this ran');
+     }
+  })
+)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
